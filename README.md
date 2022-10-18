@@ -72,3 +72,6 @@ $ zeaho-ci -s
 ```
 
 根据提示来进行操作就可以了，成功后会在企业微信群通知通过机器人发布小程序的二维码以及版本信息。
+
+### 效果预览
+![效果图](https://raw.githubusercontent.com/Indexsarrol/image/master/blogs/zeaho-ci-preview.png)
