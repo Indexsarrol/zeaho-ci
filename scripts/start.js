@@ -106,7 +106,7 @@ const run = async () => {
                 suffix: '(如果是线上问题，请依据线上版本号重新填写版本号)',
                 default: currentBranch,
                 validate: (answers) => {
-                    const pattern = /^([1-9]\d|[1-9])(\.([1-9]\d|\d)){3}$/;
+                    const pattern = /^\d+(\.\d+)+$/;
                     if (!pattern.test(answers)) {
                         console.log(chalk.red('请输入正确的版本号！'));
                         return;
