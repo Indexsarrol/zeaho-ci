@@ -5,13 +5,13 @@ zeaho-ci适于公司内部上传、预览二维码并将发送至企业微信，
 ### npm安装
 
 ```bash
-$ npm install zeaho-ci --save-dev
+$ npm install -g zeaho-ci
 ```
 
 ### yarn安装
 
 ```bash
-$ yarn add zeaho-ci --dev
+$ yarn global add zeaho-ci
 ```
 
 ## 使用
