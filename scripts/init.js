@@ -9,6 +9,12 @@ module.exports = async () => {
     const CURRENT_PATH = process.cwd();
     const tempPath = path.resolve(CURRENT_PATH, './temp');
     const configFilePath = path.resolve(CURRENT_PATH, './ci.config.json');
+
+    if (fs.existsSync(tempPath) && fs.existsSync(configFilePath)) { 
+        console.warn(chalk.yellow('[警告]：当前项目已经初始化完毕，请勿重复初始化！'));
+        return;
+    }
+
     if (!fs.existsSync(tempPath)) {
         fs.mkdirSync('temp');
         console.log(chalk.green('[通知]：创建temp文件夹成功！'))
@@ -21,7 +27,5 @@ module.exports = async () => {
         console.log(chalk.green('[通知]：创建ci.config.json成功！'))
     }
 
-    if (fs.existsSync(tempPath) && fs.existsSync(configFilePath)) { 
-        console.warn(chalk.yellow('[警告]：当前项目已经初始化完毕，请勿重复初始化！'))
-    }
+    
 }
