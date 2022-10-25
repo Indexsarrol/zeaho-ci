@@ -1,6 +1,6 @@
 {
   "name": "zeaho-ci",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "适于公司内部上传、预览二维码并将发送到企业微信里，可供测试扫码，提升开发效率",
   "main": "./bin/index.js",
   "bin": {
