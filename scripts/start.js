@@ -64,7 +64,7 @@ const run = async () => {
         });
         // 配置了可发送消息并且为体验版的时候，才发送通知
         if (enable && IS_RELEASE) {
-            notificationToQyWeChat(uploadQrcodePath, TYPE);
+            notificationToQyWeChat(uploadQrcodePath, TYPE, DESCRIPTION);
         }
     };
 
@@ -159,7 +159,7 @@ const run = async () => {
     };
 
     // 发送消息至企业微信
-    const mentioned = async (type) => {
+    const mentioned = async (type, desc) => {
         try {
             const currentBranch = await getGitBranch().split('/')[1];
             const isRelease = type === 'preview' ? '开发版' : '体验版';
@@ -174,9 +174,7 @@ const run = async () => {
                         isOnlineQs
                             ? `[${currentBranch}](https://jira.zeaho.com/browse/${currentBranch})`
                             : currentBranch
-                    }</font> \n版本描述: <font color=\"comment\">${
-                        getGitUserName() || '机器人CI'
-                    } ${getCompleteTime()}提交</font>\n接收人: <font color=\"comment\">${notification_list.map(
+                    }</font> \n版本描述: <font color=\"comment\">${desc || ((getGitUserName() || '机器人CI') + getCompleteTime())}</font>\n接收人: <font color=\"comment\">${notification_list.map(
                         (item) => `<@${item}>`,
                     )}</font>`,
                 },
@@ -191,9 +189,9 @@ const run = async () => {
     };
 
     // 综合上述两种方法
-    const notificationToQyWeChat = async (qrcodePath, type) => {
+    const notificationToQyWeChat = async (qrcodePath, type, desc) => {
         await sendQrcodeMsg(qrcodePath);
-        await mentioned(type);
+        await mentioned(type, desc);
     };
 
     // 入口函数

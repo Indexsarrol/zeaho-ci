@@ -26,6 +26,4 @@ module.exports = async () => {
         await fs.writeJSONSync(CURRENT_PATH + '/ci.config.json', content, { spaces: 4 });
         console.log(chalk.green('[通知]：创建ci.config.json成功！'))
     }
-
-    
 }
