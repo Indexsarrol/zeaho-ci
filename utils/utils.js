@@ -63,3 +63,20 @@ exports.getCurrentQrCodePath = (imagePath) => {
     const qrcodePath = path.resolve(tempDirPath, imagePath);
     return qrcodePath;
 };
+
+/**
+ * 获取最近一次git提交记录
+ */
+exports.getLatestGitCommitMsg = () => {
+    const { stdout } = execa.commandSync('git rev-parse --abbrev-ref HEAD');
+    const command = execa.commandSync(`git log -1 ${stdout} HEAD --grep feat --pretty=format:%s`);
+    return command.stdout;
+};
+
+/**
+ * 获取指定范围的随机整数
+ */
+
+exports.getRandomIntNum = (min, max) => { 
+    return Math.floor(Math.random() * (min - max) + max)
+}
