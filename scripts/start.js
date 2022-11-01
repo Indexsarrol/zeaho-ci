@@ -11,7 +11,7 @@ const {
     getCompleteTime,
     sendMsgToQyWeChat,
     getCurrentQrCodePath,
-} = require('../utils');
+} = require('../utils/utils');
 
 const run = async () => {
     const configs = path.resolve(CURRENT_PATH, './ci.config.json');
